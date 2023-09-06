@@ -15,6 +15,45 @@ const APIs = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
     const value = (document.getElementById('markdown-value') as HTMLInputElement).value;
     props.cherry.current?.insert(value, true, [1, 2], true);
   }
+
+  const getMarkdownValue = () => {
+    alert(props.cherry.current?.getMarkdown());
+    console.log(props.cherry.current?.getMarkdown());
+  }
+
+  const getHtmlValue = () => {
+    alert(props.cherry.current?.getHtml());
+    console.log(props.cherry.current?.getHtml());
+  }
+
+  const exportPDF = () => props.cherry.current?.export('pdf', 'cherry.pdf');
+
+  const exportImg = () => props.cherry.current?.export('img', 'cherry.png');
+
+  const readOnly = () => props.cherry.current?.switchModel('previewOnly');
+
+  const pureEditing = () => props.cherry.current?.switchModel('editOnly');
+
+  const doubleColumnEditing = () => props.cherry.current?.switchModel('edit&preview');
+
+  const getToc = () => {
+    const toc = props.cherry.current?.getToc();
+    alert(JSON.stringify(toc));
+    console.log(toc);
+  }
+
+  const getCodeMirror = () => {
+    const codeMirror = props.cherry.current?.getCodeMirror();
+    alert('open console to see the instance of CodeMirror.');
+    console.log(codeMirror);
+  }
+
+  const getPreviewer = () => {
+    const previewer = props.cherry.current?.getPreviewer();
+    alert('open console to see the instance of Previewer.');
+    console.log(previewer);
+  }
+
   return (
     <div className='apis' >
       <h1> Cherry API</h1>
@@ -67,9 +106,110 @@ const APIs = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
           </div>
         </div>
       </div>
+
+      <div className='apis__item'>
+        <h2>getMarkdown()</h2>
+        <div className='introduce__title'>
+          <div className='title--ch'>获取 Markdown 内容</div>
+          <div className='title--en' >get value of Markdown </div>
+        </div>
+        <div className='content__operate'>
+          <div className='content__operate__item'>
+            <a onClick={getMarkdownValue}>try it</a>
+          </div>
+        </div>
+      </div>
+
+      <div className='apis__item'>
+        <h2>getHtml()</h2>
+        <div className='introduce__title'>
+          <div className='title--ch'>获取渲染后的html内容</div>
+          <div className='title--en' >get rendered HTML content </div>
+        </div>
+        <div className='content__operate'>
+          <div className='content__operate__item'>
+            <a onClick={getHtmlValue}>try it</a>
+          </div>
+        </div>
+      </div>
+
+      <div className='apis__item'>
+        <h2>export(type:string)</h2>
+        <div className='introduce__title'>
+          <div className='title--ch'>导出预览区域的内容</div>
+          <div className='title--en' >Export the content of the preview area</div>
+        </div>
+        <div className='content--en'>
+          <div>type：{`'pdf' | 'img'`}</div>
+        </div>
+        <div className='content__operate'>
+          <div className='content__operate__item'>
+            <a onClick={exportPDF}>export PDF</a>
+            <a onClick={exportImg}>export img</a>
+          </div>
+        </div>
+      </div>
+
+      <div className='apis__item'>
+        <h2>switchModel(model:string)</h2>
+        <div className='introduce__title'>
+          <div className='title--ch'>切换模式</div>
+          <div className='title--en' >Switch Mode</div>
+        </div>
+        <div className='content--en'>
+          <div>{`'edit&preview' | 'editOnly' | 'previewOnly'`}</div>
+        </div>
+        <div className='content__operate'>
+          <div className='content__operate__item'>
+            <a onClick={readOnly}>read Only</a>
+            <a onClick={pureEditing}>Pure Editing</a>
+            <a onClick={doubleColumnEditing}>Double Column Editing</a>
+          </div>
+        </div>
+      </div>
+
+      <div className='apis__item'>
+        <h2>getToc()</h2>
+        <div className='introduce__title'>
+          <div className='title--ch'>获取由标题组成的目录</div>
+          <div className='title--en' >get a table of contents composed of titles</div>
+        </div>
+        <div className='content__operate'>
+          <div className='content__operate__item'>
+            <a onClick={getToc}>try it</a>
+          </div>
+        </div>
+      </div>
+
+      <div className='apis__item'>
+        <h2>getCodeMirror()</h2>
+        <div className='introduce__title'>
+          <div className='title--ch'>获取左侧编辑器实例</div>
+          <div className='title--en' >get Left Editor(CodeMirror) instance</div>
+        </div>
+        <div className='content__operate'>
+          <div className='content__operate__item'>
+            <a onClick={getCodeMirror}>try it</a>
+          </div>
+        </div>
+      </div>
+
+      <div className='apis__item'>
+        <h2>getPreviewer()</h2>
+        <div className='introduce__title'>
+          <div className='title--ch'>获取右侧预览区对象实例</div>
+          <div className='title--en' >get an instance of the right preview area object</div>
+        </div>
+        <div className='content__operate'>
+          <div className='content__operate__item'>
+            <a onClick={getPreviewer}>try it</a>
+          </div>
+        </div>
+      </div>
+
     </div >
   )
 
 };
 
-export default APIs;
+export default APIs; 

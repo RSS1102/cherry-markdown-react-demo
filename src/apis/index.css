@@ -17,6 +17,7 @@ a {
   color: #3582fb;
   font-size: 14px;
   text-decoration: underline;
+  margin: 0 12px;
 }
 
 .apis__item {
