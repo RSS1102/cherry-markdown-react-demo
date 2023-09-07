@@ -26,9 +26,8 @@ const APIs = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
     console.log(props.cherry.current?.getHtml());
   }
 
-  const exportPDF = () => props.cherry.current?.export('pdf', 'cherry.pdf');
+  const exportFile = (type: string, fileName: string) => props.cherry.current?.export(type, fileName);
 
-  const exportImg = () => props.cherry.current?.export('img', 'cherry.png');
 
   const readOnly = () => props.cherry.current?.switchModel('previewOnly');
 
@@ -140,12 +139,14 @@ const APIs = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
           <div className='title--en' >Export the content of the preview area</div>
         </div>
         <div className='content--en'>
-          <div>type：{`'pdf' | 'img'`}</div>
+          <div>type：{`{'pdf' | 'img' 'html' | 'markdown'}`}</div>
         </div>
         <div className='content__operate'>
           <div className='content__operate__item'>
-            <a onClick={exportPDF}>export PDF</a>
-            <a onClick={exportImg}>export img</a>
+            <a onClick={() => exportFile('pdf', 'cherry.pdf')}>export PDF</a>
+            <a onClick={() => exportFile('img', 'cherry.png]')}>export img</a>
+            <a onClick={() => exportFile('html', 'cherry.html')}>export html</a>
+            <a onClick={() => exportFile('markdown', 'cherry.md]')}>export markdown</a>
           </div>
         </div>
       </div>
@@ -157,7 +158,7 @@ const APIs = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
           <div className='title--en' >Switch Mode</div>
         </div>
         <div className='content--en'>
-          <div>{`'edit&preview' | 'editOnly' | 'previewOnly'`}</div>
+          <div>{`{'edit&preview' | 'editOnly' | 'previewOnly'}`}</div>
         </div>
         <div className='content__operate'>
           <div className='content__operate__item'>
