@@ -80,3 +80,18 @@ a {
     }
   }
 }
+
+.cherry-api-table {
+  width: 100%;
+
+
+}
+
+.cherry-api-table th {
+  background-color: #dfe6ee;
+}
+
+.cherry-api-table td {
+  border-bottom: 1px solid #dfe6ee;
+  text-align: center;
+}

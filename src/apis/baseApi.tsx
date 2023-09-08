@@ -1,7 +1,7 @@
 import Cherry from 'cherry-markdown';
 import './index.css'
 
-const APIs = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
+const BaseApi = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
 
   const setMarkdownValue = () => {
     const value = (document.getElementById('set-markdown-value') as HTMLInputElement).value;
@@ -54,7 +54,7 @@ const APIs = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
   }
 
   return (
-    <div className='apis' >
+    <>
       <h1> Cherry API</h1>
       <div className='apis__item'>
         <h2>setMarkdown(content:string, keepCursor = false)</h2>
@@ -63,7 +63,7 @@ const APIs = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
           <div className='title--en' >set value</div>
         </div>
         <div className='content--ch'>setValue(content:string, keepCursor = false)有同样的功能; keepCursor = true 更新内容的时候保持光标位置。</div>
-        <div className='content--en'>setValue(content: string, keepCursor=false) has the same function; KeepCursor=true Keeps the cursor position when updating content.</div>
+        <div className='content--en'>setValue(content: string, keepCursor=false) Has the same function; KeepCursor=true Keeps the cursor position when updating content.</div>
         <div className='content__operate'>
           <div className='content__operate__item'>
             <textarea style={{ width: "100%" }} rows={3} id='markdown-value' defaultValue="#输入内容 Input Content" />
@@ -90,8 +90,8 @@ const APIs = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
         </div>
         <div className='content--ch'>
           <div>isSelect=true -- 选中刚插入的内容</div>
-          <div>anchor = false -- [x,y] 代表x+1行，y+1字符偏移量，默认false 会从光标处插入</div>
-          <div>focus = true -- 保持编辑器处于focus状态，默认true，选中编辑器（用户可以继续输入）</div>
+          <div>anchor = false -- [x,y] 代表x+1行，y+1字符偏移量，默认false 会从光标处插入。</div>
+          <div>focus = true -- 保持编辑器处于focus状态，默认true，选中编辑器（用户可以继续输入）。</div>
         </div>
         <div className='content--en'>
           <div>isSelect = true -- Select the content just inserted.</div>
@@ -109,8 +109,8 @@ const APIs = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
       <div className='apis__item'>
         <h2>getMarkdown()</h2>
         <div className='introduce__title'>
-          <div className='title--ch'>获取 Markdown 内容</div>
-          <div className='title--en' >get value of Markdown </div>
+          <div className='title--ch'>获取 Markdown 内容。</div>
+          <div className='title--en' >Get value of Markdown.</div>
         </div>
         <div className='content__operate'>
           <div className='content__operate__item'>
@@ -122,8 +122,8 @@ const APIs = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
       <div className='apis__item'>
         <h2>getHtml()</h2>
         <div className='introduce__title'>
-          <div className='title--ch'>获取渲染后的html内容</div>
-          <div className='title--en' >get rendered HTML content </div>
+          <div className='title--ch'>获取渲染后的html内容。</div>
+          <div className='title--en' >Get rendered HTML content.</div>
         </div>
         <div className='content__operate'>
           <div className='content__operate__item'>
@@ -135,8 +135,8 @@ const APIs = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
       <div className='apis__item'>
         <h2>export(type:string)</h2>
         <div className='introduce__title'>
-          <div className='title--ch'>导出预览区域的内容</div>
-          <div className='title--en' >Export the content of the preview area</div>
+          <div className='title--ch'>导出预览区域的内容。</div>
+          <div className='title--en' >Export the content of the preview area.</div>
         </div>
         <div className='content--en'>
           <div>type：{`{'pdf' | 'img' 'html' | 'markdown'}`}</div>
@@ -154,8 +154,8 @@ const APIs = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
       <div className='apis__item'>
         <h2>switchModel(model:string)</h2>
         <div className='introduce__title'>
-          <div className='title--ch'>切换模式</div>
-          <div className='title--en' >Switch Mode</div>
+          <div className='title--ch'>切换模式。</div>
+          <div className='title--en' >Switch Mode.</div>
         </div>
         <div className='content--en'>
           <div>{`{'edit&preview' | 'editOnly' | 'previewOnly'}`}</div>
@@ -172,8 +172,8 @@ const APIs = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
       <div className='apis__item'>
         <h2>getToc()</h2>
         <div className='introduce__title'>
-          <div className='title--ch'>获取由标题组成的目录</div>
-          <div className='title--en' >get a table of contents composed of titles</div>
+          <div className='title--ch'>获取由标题组成的目录。</div>
+          <div className='title--en' >Get a table of contents composed of titles.</div>
         </div>
         <div className='content__operate'>
           <div className='content__operate__item'>
@@ -185,8 +185,8 @@ const APIs = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
       <div className='apis__item'>
         <h2>getCodeMirror()</h2>
         <div className='introduce__title'>
-          <div className='title--ch'>获取左侧编辑器实例</div>
-          <div className='title--en' >get Left Editor(CodeMirror) instance</div>
+          <div className='title--ch'>获取左侧编辑器实例。</div>
+          <div className='title--en' >get Left Editor(CodeMirror) instance.</div>
         </div>
         <div className='content__operate'>
           <div className='content__operate__item'>
@@ -198,8 +198,8 @@ const APIs = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
       <div className='apis__item'>
         <h2>getPreviewer()</h2>
         <div className='introduce__title'>
-          <div className='title--ch'>获取右侧预览区对象实例</div>
-          <div className='title--en' >get an instance of the right preview area object</div>
+          <div className='title--ch'>获取右侧预览区对象实例。</div>
+          <div className='title--en' >Get an instance of the right preview area object.</div>
         </div>
         <div className='content__operate'>
           <div className='content__operate__item'>
@@ -207,10 +207,10 @@ const APIs = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
           </div>
         </div>
       </div>
+    </>
 
-    </div >
   )
 
 };
 
-export default APIs; 
+export default BaseApi; 

@@ -1,8 +1,10 @@
 
 import './App.css'
-import APIs from '@/apis';
+import APIs from '@/apis/baseApi';
 import Cherry from 'cherry-markdown';
 import { useRef, useEffect } from 'react';
+import EngineApi from './apis/engineApi';
+import ToolbarHandlersApi from './apis/toolbarHandlersApi';
 
 function App() {
   const cherry = useRef<Cherry | null>(null)
@@ -15,7 +17,11 @@ function App() {
 
   return (
     <div className='home'>
-      <APIs cherry={cherry} />
+      <div className='apis' >
+        <APIs cherry={cherry} />
+        <EngineApi cherry={cherry}/>
+        <ToolbarHandlersApi cherry={cherry}/>
+      </div>
       <div id="cherry-markdown" />
     </div>
   )
