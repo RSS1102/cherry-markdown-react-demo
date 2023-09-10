@@ -8,6 +8,17 @@ h2 {
   text-indent: 25px;
 }
 
+h4 {
+  margin: 0 25px;
+  text-indent: 25px;
+  color: rgb(255, 50, 50);
+}
+
+.default-type {
+  color: rgb(255, 145, 0);
+  font-weight: bolder;
+}
+
 .apis {
   width: 50%;
 }

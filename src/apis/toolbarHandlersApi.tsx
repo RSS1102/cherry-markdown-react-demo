@@ -46,12 +46,13 @@ const ToolbarHandlersApi = (props: { cherry: React.MutableRefObject<Cherry | nul
       </div>
 
       <div className='apis__item'>
-        <h2>toolbar.toolbarHandlers.header(level:number)</h2>
+        <h2>toolbar.toolbarHandlers.header(level:1|2|3|4|5|'1'|'2'|'3'|'4'|'5')</h2>
         <div className='introduce__title'>
           <div className='title--ch'>向cherry编辑器中插入标题语法。</div>
           <div className='title--en' >Insert title syntax into Cherry editor.</div>
         </div>
-        <div className='content--en'>level:1-5</div>
+        <div className='content--ch'>level:<span className='default-type'>1~5|'1'~'5'</span> h1-h5标题。</div>
+        <div className='content--en'>level:<span className='default-type'>1~5|'1'~'5'</span> Title of h1-h5.</div>
         <div className='content__operate'>
           <div className='content__operate__item'>
             <a onClick={() => toolbarHandlersHead(1)}>head h1</a>
@@ -77,7 +78,7 @@ const ToolbarHandlersApi = (props: { cherry: React.MutableRefObject<Cherry | nul
       </div>
 
       <div className='apis__item'>
-        <h2>toolbar.toolbarHandlers.list(type:number)</h2>
+        <h2>toolbar.toolbarHandlers.list(type:'ol'|'ul'|'checklist'|1|2|3|'1'|'2'|'3')</h2>
         <div className='introduce__title'>
           <div className='title--ch'>向cherry编辑器中插入有序、无序列表或者checklist语法。</div>
           <div className='title--en' >Insert ordered lists, unordered lists, or checklist syntax into the Cherry editor.</div>
@@ -91,16 +92,16 @@ const ToolbarHandlersApi = (props: { cherry: React.MutableRefObject<Cherry | nul
           </thead>
           <tbody>
             <tr>
-              <td>'1'</td>
+              <td className='default-type'>1|'1'|'ol'</td>
               <td>ol 列表</td>
             </tr>
-            <tr>
-              <td>'2'</td>
+            <tr >
+              <td className='default-type'>2|'2'|'ul'</td>
               <td>ul 列表</td>
             </tr>
             <tr>
-              <td>'3'</td>
-              <td>checklist</td>
+              <td className='default-type'>3|'3'|'checklist'</td>
+              <td>checklist 可选列表</td>
             </tr>
           </tbody>
         </table>
@@ -114,7 +115,7 @@ const ToolbarHandlersApi = (props: { cherry: React.MutableRefObject<Cherry | nul
       </div>
 
       <div className='apis__item'>
-        <h2>toolbar.toolbarHandlers.insert(type:string)</h2>
+        <h2>toolbar.toolbarHandlers.insert(type:'hr'|'br'|'code'|'formula'|'checklist'|'toc'|'link'|'image'|'video'|'audio'|'normal-table'|'normal-table-row*col')</h2>
         <div className='introduce__title'>
           <div className='title--ch'>向cherry编辑器中插入特定语法。</div>
           <div className='title--en' >Insert specific syntax into the Cherry editor.</div>
@@ -128,52 +129,55 @@ const ToolbarHandlersApi = (props: { cherry: React.MutableRefObject<Cherry | nul
           </thead>
           <tbody>
             <tr>
-              <td>'hr'</td>
+              <td className='default-type'>'hr'</td>
               <td>删除线</td>
             </tr>
             <tr>
-              <td>'br'</td>
+              <td className='default-type'>'br'</td>
               <td>强制换行</td>
             </tr>
             <tr>
-              <td>'code'</td>
+              <td className='default-type'>'code'</td>
               <td>代码块</td>
             </tr>
             <tr>
-              <td>'formula'</td>
+              <td className='default-type'>'formula'</td>
               <td>行内公式</td>
             </tr>
             <tr>
-              <td>'checklist'</td>
+              <td className='default-type'>'checklist'</td>
               <td>检查项</td>
             </tr>
             <tr>
-              <td>'toc'</td>
+              <td className='default-type'>'toc'</td>
               <td>目录</td>
             </tr>
             <tr>
-              <td>'link'</td>
+              <td className='default-type'>'link'</td>
               <td>超链接</td>
             </tr>
             <tr>
-              <td>'image'</td>
+              <td className='default-type'>'image'</td>
               <td>图片</td>
             </tr>
             <tr>
-              <td>'video'</td>
+              <td className='default-type'>'video'</td>
               <td>视频</td>
             </tr>
             <tr>
-              <td>'audio'</td>
+              <td className='default-type'>'audio'</td>
               <td>音频</td>
             </tr>
             <tr>
-              <td>'normal-table'</td>
+              <td className='default-type'>'normal-table'</td>
               <td>插入3行5列的表格</td>
             </tr>
             <tr>
-              <td>'normal-table-row*col'</td>
-              <td>如<code>normal-table-2*4</code>插入2行(包含表头是3行)4列的表格</td>
+              <td className='default-type'>'normal-table-row*col'</td>
+              <td>如<code>normal-table-2*4</code>
+                <div className='content--ch'>插入2行(包含表头是3行)4列的表格。</div>
+                <div className='content--en'>Insert a table with 2 rows (including 3 rows in the header) and 4 columns.</div>
+              </td>
             </tr>
           </tbody>
         </table>
@@ -196,7 +200,7 @@ const ToolbarHandlersApi = (props: { cherry: React.MutableRefObject<Cherry | nul
       </div>
 
       <div className='apis__item'>
-        <h2>toolbar.toolbarHandlers.graph(type:string)</h2>
+        <h2>toolbar.toolbarHandlers.graph(type:'1'|'2'|'3'|'4'|'5'|'6'|1|2|3|4|5|6|'flow'|'sequence'|'state'|'class'|'pie'|'gantt')</h2>
         <div className='introduce__title'>
           <div className='title--ch'>向cherry编辑器中插入画图语法。</div>
           <div className='title--en' >Insert drawing syntax into Cherry editor.</div>
@@ -210,27 +214,27 @@ const ToolbarHandlersApi = (props: { cherry: React.MutableRefObject<Cherry | nul
           </thead>
           <tbody>
             <tr>
-              <td>'1'</td>
+              <td className='default-type'>1|'1'|'flow'</td>
               <td>流程图</td>
             </tr>
             <tr>
-              <td>'2'</td>
+              <td className='default-type'>2|'2'|'sequence'</td>
               <td>时序图</td>
             </tr>
             <tr>
-              <td>'3'</td>
+              <td className='default-type'>3|'3'|'state'</td>
               <td>状态图</td>
             </tr>
             <tr>
-              <td>'4'</td>
+              <td className='default-type'>4|'4'|'class'</td>
               <td>类图</td>
             </tr>
             <tr>
-              <td>'5'</td>
+              <td className='default-type'>5|'5'|'pie'</td>
               <td>饼图</td>
             </tr>
             <tr>
-              <td>'6'</td>
+              <td className='default-type'>6|'6'|'gantt'</td>
               <td>甘特图</td>
             </tr>
           </tbody>

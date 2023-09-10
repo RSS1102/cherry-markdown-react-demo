@@ -58,18 +58,26 @@ const BaseApi = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
       <h1> Cherry API</h1>
       <div className='apis__item'>
         <h2>setMarkdown(content:string, keepCursor = false)</h2>
+        <h4>Same as : setValue(content:string, keepCursor = false)</h4>
         <div className='introduce__title'>
           <div className='title--ch'>设置内容</div>
           <div className='title--en' >set value</div>
         </div>
-        <div className='content--ch'>setValue(content:string, keepCursor = false)有同样的功能; keepCursor = true 更新内容的时候保持光标位置。</div>
-        <div className='content--en'>setValue(content: string, keepCursor=false) Has the same function; KeepCursor=true Keeps the cursor position when updating content.</div>
+        <div className='content--ch'>
+          <div>content:<span className='default-type'>string</span> 设置的新内容。</div>
+          <div> keepCursor?:
+            <span className='default-type'>boolean</span>
+            (false) 更新内容的时候保持光标位置。</div>
+        </div>
+        <div className='content--en'>
+          <div>content?: <span className='default-type'>string</span> New content set up.</div>
+          <div>keepCursor?:
+            <span className='default-type'>boolean</span>
+            (false) Keeps the cursor position when updating content.</div>
+        </div>
         <div className='content__operate'>
           <div className='content__operate__item'>
             <textarea style={{ width: "100%" }} rows={3} id='markdown-value' defaultValue="#输入内容 Input Content" />
-            <div className='content__operate__item__additional-description'>
-              <code>Cherry.current.setMarkdown(value, true)</code>
-            </div>
             <div className='content__operate__item__additional-description additional-description--ch'>
               点击try it之后，然后在编辑区选中一个区域等待1.5秒就会看到它更新了内容，你的光标位置还在同样的位置。
             </div>
@@ -89,14 +97,16 @@ const BaseApi = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
           <div className='title--en' >insert value</div>
         </div>
         <div className='content--ch'>
-          <div>isSelect=true -- 选中刚插入的内容</div>
-          <div>anchor = false -- [x,y] 代表x+1行，y+1字符偏移量，默认false 会从光标处插入。</div>
-          <div>focus = true -- 保持编辑器处于focus状态，默认true，选中编辑器（用户可以继续输入）。</div>
+          <div>content:<span className='default-type'>string</span> 插入的内容。</div>
+          <div>isSelect?:<span className='default-type'>boolean</span>(false) 选中刚插入的内容</div>
+          <div>anchor?:<span className='default-type'>boolean</span>(false) [x,y] 代表x+1行，y+1字符偏移量，默认false 会从光标处插入。</div>
+          <div>focus:<span className='default-type'>boolean</span>(true) 保持编辑器处于focus状态，默认true，选中编辑器（用户可以继续输入）。</div>
         </div>
         <div className='content--en'>
-          <div>isSelect = true -- Select the content just inserted.</div>
-          <div>anchor = false -- [x, y] represents x+1 line, y+1 character offset, default false will be inserted from the cursor.</div>
-          <div>focus = true -- Keep the editor in the focus state, default to true, select the editor (users can continue typing).</div>
+          <div>content:<span className='default-type'>string</span> Insert the content.</div>
+          <div>isSelect?:<span className='default-type'>boolean</span>(false) Select the content just inserted.</div>
+          <div>anchor?:<span className='default-type'>boolean</span>(false) [x, y] Represents x+1 line, y+1 character offset, default false will be inserted from the cursor.</div>
+          <div>focus?:<span className='default-type'>boolean</span>(true) Keep the editor in the focus state, default to true, select the editor (users can continue typing).</div>
         </div>
         <div className='content__operate'>
           <div className='content__operate__item'>
@@ -120,7 +130,7 @@ const BaseApi = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
       </div>
 
       <div className='apis__item'>
-        <h2>getHtml()</h2>
+        <h2>getHtml(wrapTheme = true)</h2>
         <div className='introduce__title'>
           <div className='title--ch'>获取渲染后的html内容。</div>
           <div className='title--en' >Get rendered HTML content.</div>
@@ -129,17 +139,23 @@ const BaseApi = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
           <div className='content__operate__item'>
             <a onClick={getHtmlValue}>try it</a>
           </div>
+          <div className='content--ch'>
+            <div>wrapTheme?:<span className='default-type'>boolean</span>(true) 是否在外层包裹主题class</div>
+          </div>
+          <div className='content--en'>
+            <div>wrapTheme?:<span className='default-type'>boolean</span>(true) Does wrap the theme class in the outer layer.</div>
+          </div>
         </div>
       </div>
 
       <div className='apis__item'>
-        <h2>export(type:string)</h2>
+        <h2>export(type='pdf')</h2>
         <div className='introduce__title'>
           <div className='title--ch'>导出预览区域的内容。</div>
           <div className='title--en' >Export the content of the preview area.</div>
         </div>
         <div className='content--en'>
-          <div>type：{`{'pdf' | 'img' 'html' | 'markdown'}`}</div>
+          <div>type:<span className='default-type'>'pdf' | 'img' 'html' | 'markdown'</span>:(pdf)</div>
         </div>
         <div className='content__operate'>
           <div className='content__operate__item'>
@@ -156,9 +172,9 @@ const BaseApi = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
         <div className='introduce__title'>
           <div className='title--ch'>切换模式。</div>
           <div className='title--en' >Switch Mode.</div>
-        </div>
+        </div> 
         <div className='content--en'>
-          <div>{`{'edit&preview' | 'editOnly' | 'previewOnly'}`}</div>
+          <div>model:<span className='default-type'>'edit&preview' | 'editOnly' | 'previewOnly'</span></div>
         </div>
         <div className='content__operate'>
           <div className='content__operate__item'>
@@ -208,7 +224,6 @@ const BaseApi = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
         </div>
       </div>
     </>
-
   )
 
 };
