@@ -14,8 +14,13 @@ h4 {
   color: rgb(255, 50, 50);
 }
 
-.default-type {
+.type-style {
   color: rgb(255, 145, 0);
+  font-weight: bolder;
+}
+
+.default-style {
+  color: blue;
   font-weight: bolder;
 }
 

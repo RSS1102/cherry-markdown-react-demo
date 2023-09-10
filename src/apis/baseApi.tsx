@@ -64,16 +64,18 @@ const BaseApi = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
           <div className='title--en' >set value</div>
         </div>
         <div className='content--ch'>
-          <div>content:<span className='default-type'>string</span> 设置的新内容。</div>
+          <div>content:<span className='type-style'>string</span> 设置的新内容。</div>
           <div> keepCursor?:
-            <span className='default-type'>boolean</span>
-            (false) 更新内容的时候保持光标位置。</div>
+            <span className='type-style'>boolean</span>
+            <span className='default-style'>(false)</span>
+            更新内容的时候保持光标位置。</div>
         </div>
         <div className='content--en'>
-          <div>content?: <span className='default-type'>string</span> New content set up.</div>
+          <div>content?: <span className='type-style'>string</span> New content set up.</div>
           <div>keepCursor?:
-            <span className='default-type'>boolean</span>
-            (false) Keeps the cursor position when updating content.</div>
+            <span className='type-style'>boolean</span>
+            <span className='default-style'>(false)</span>
+            Keeps the cursor position when updating content.</div>
         </div>
         <div className='content__operate'>
           <div className='content__operate__item'>
@@ -97,16 +99,28 @@ const BaseApi = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
           <div className='title--en' >insert value</div>
         </div>
         <div className='content--ch'>
-          <div>content:<span className='default-type'>string</span> 插入的内容。</div>
-          <div>isSelect?:<span className='default-type'>boolean</span>(false) 选中刚插入的内容</div>
-          <div>anchor?:<span className='default-type'>boolean</span>(false) [x,y] 代表x+1行，y+1字符偏移量，默认false 会从光标处插入。</div>
-          <div>focus:<span className='default-type'>boolean</span>(true) 保持编辑器处于focus状态，默认true，选中编辑器（用户可以继续输入）。</div>
+          <div>content:<span className='type-style'>string</span> 插入的内容。</div>
+          <div>isSelect?:<span className='type-style'>boolean</span>
+            <span className='default-style'>(false)</span> 选中刚插入的内容</div>
+          <div>anchor?:
+            <span className='type-style'>boolean</span>
+            <span className='default-style'>(false)</span>
+            [x,y] 代表x+1行，y+1字符偏移量，默认false 会从光标处插入。</div>
+          <div>focus:<span className='type-style'>boolean</span>
+            <span className='default-style'>(true)</span>
+            保持编辑器处于focus状态，默认true，选中编辑器（用户可以继续输入）。</div>
         </div>
         <div className='content--en'>
-          <div>content:<span className='default-type'>string</span> Insert the content.</div>
-          <div>isSelect?:<span className='default-type'>boolean</span>(false) Select the content just inserted.</div>
-          <div>anchor?:<span className='default-type'>boolean</span>(false) [x, y] Represents x+1 line, y+1 character offset, default false will be inserted from the cursor.</div>
-          <div>focus?:<span className='default-type'>boolean</span>(true) Keep the editor in the focus state, default to true, select the editor (users can continue typing).</div>
+          <div>content:<span className='type-style'>string</span> Insert the content.</div>
+          <div>isSelect?:<span className='type-style'>boolean</span>
+            <span className='default-style'>(false)</span>
+            Select the content just inserted.</div>
+          <div>anchor?:<span className='type-style'>boolean</span>
+            <span className='default-style'>(false)</span>
+            [x, y] Represents x+1 line, y+1 character offset, default false will be inserted from the cursor.</div>
+          <div>focus?:<span className='type-style'>boolean</span>
+            <span className='default-style'>(true)</span>
+            Keep the editor in the focus state, default to true, select the editor (users can continue typing).</div>
         </div>
         <div className='content__operate'>
           <div className='content__operate__item'>
@@ -140,10 +154,14 @@ const BaseApi = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
             <a onClick={getHtmlValue}>try it</a>
           </div>
           <div className='content--ch'>
-            <div>wrapTheme?:<span className='default-type'>boolean</span>(true) 是否在外层包裹主题class</div>
+            <div>wrapTheme?:<span className='type-style'>boolean</span>
+              <span className='default-style'>(true)</span>
+              是否在外层包裹主题class</div>
           </div>
           <div className='content--en'>
-            <div>wrapTheme?:<span className='default-type'>boolean</span>(true) Does wrap the theme class in the outer layer.</div>
+            <div>wrapTheme?:<span className='type-style'>boolean</span>
+              <span className='default-style'>(true)</span>
+              Does wrap the theme class in the outer layer.</div>
           </div>
         </div>
       </div>
@@ -155,7 +173,9 @@ const BaseApi = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
           <div className='title--en' >Export the content of the preview area.</div>
         </div>
         <div className='content--en'>
-          <div>type:<span className='default-type'>'pdf' | 'img' 'html' | 'markdown'</span>:(pdf)</div>
+          <div>type:<span className='type-style'>'pdf' | 'img' 'html' | 'markdown'</span>:
+            <span className='default-style'>('pdf')</span>
+            </div>
         </div>
         <div className='content__operate'>
           <div className='content__operate__item'>
@@ -172,9 +192,12 @@ const BaseApi = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
         <div className='introduce__title'>
           <div className='title--ch'>切换模式。</div>
           <div className='title--en' >Switch Mode.</div>
-        </div> 
+        </div>
         <div className='content--en'>
-          <div>model:<span className='default-type'>'edit&preview' | 'editOnly' | 'previewOnly'</span></div>
+          <div>model:
+            <span className='type-style'>'edit&preview' | 'editOnly' | 'previewOnly'</span>
+            <span className='default-style'>('edit&preview')</span>
+          </div>
         </div>
         <div className='content__operate'>
           <div className='content__operate__item'>

@@ -51,8 +51,8 @@ const ToolbarHandlersApi = (props: { cherry: React.MutableRefObject<Cherry | nul
           <div className='title--ch'>向cherry编辑器中插入标题语法。</div>
           <div className='title--en' >Insert title syntax into Cherry editor.</div>
         </div>
-        <div className='content--ch'>level:<span className='default-type'>1~5|'1'~'5'</span> h1-h5标题。</div>
-        <div className='content--en'>level:<span className='default-type'>1~5|'1'~'5'</span> Title of h1-h5.</div>
+        <div className='content--ch'>level:<span className='type-style'>1~5|'1'~'5'</span> h1-h5标题。</div>
+        <div className='content--en'>level:<span className='type-style'>1~5|'1'~'5'</span> Title of h1-h5.</div>
         <div className='content__operate'>
           <div className='content__operate__item'>
             <a onClick={() => toolbarHandlersHead(1)}>head h1</a>
@@ -92,15 +92,15 @@ const ToolbarHandlersApi = (props: { cherry: React.MutableRefObject<Cherry | nul
           </thead>
           <tbody>
             <tr>
-              <td className='default-type'>1|'1'|'ol'</td>
+              <td className='type-style'>1|'1'|'ol'</td>
               <td>ol 列表</td>
             </tr>
             <tr >
-              <td className='default-type'>2|'2'|'ul'</td>
+              <td className='type-style'>2|'2'|'ul'</td>
               <td>ul 列表</td>
             </tr>
             <tr>
-              <td className='default-type'>3|'3'|'checklist'</td>
+              <td className='type-style'>3|'3'|'checklist'</td>
               <td>checklist 可选列表</td>
             </tr>
           </tbody>
@@ -129,54 +129,54 @@ const ToolbarHandlersApi = (props: { cherry: React.MutableRefObject<Cherry | nul
           </thead>
           <tbody>
             <tr>
-              <td className='default-type'>'hr'</td>
+              <td className='type-style'>'hr'</td>
               <td>删除线</td>
             </tr>
             <tr>
-              <td className='default-type'>'br'</td>
+              <td className='type-style'>'br'</td>
               <td>强制换行</td>
             </tr>
             <tr>
-              <td className='default-type'>'code'</td>
+              <td className='type-style'>'code'</td>
               <td>代码块</td>
             </tr>
             <tr>
-              <td className='default-type'>'formula'</td>
+              <td className='type-style'>'formula'</td>
               <td>行内公式</td>
             </tr>
             <tr>
-              <td className='default-type'>'checklist'</td>
+              <td className='type-style'>'checklist'</td>
               <td>检查项</td>
             </tr>
             <tr>
-              <td className='default-type'>'toc'</td>
+              <td className='type-style'>'toc'</td>
               <td>目录</td>
             </tr>
             <tr>
-              <td className='default-type'>'link'</td>
+              <td className='type-style'>'link'</td>
               <td>超链接</td>
             </tr>
             <tr>
-              <td className='default-type'>'image'</td>
+              <td className='type-style'>'image'</td>
               <td>图片</td>
             </tr>
             <tr>
-              <td className='default-type'>'video'</td>
+              <td className='type-style'>'video'</td>
               <td>视频</td>
             </tr>
             <tr>
-              <td className='default-type'>'audio'</td>
+              <td className='type-style'>'audio'</td>
               <td>音频</td>
             </tr>
             <tr>
-              <td className='default-type'>'normal-table'</td>
+              <td className='type-style'>'normal-table'</td>
               <td>插入3行5列的表格</td>
             </tr>
             <tr>
-              <td className='default-type'>'normal-table-row*col'</td>
+              <td className='type-style'>'normal-table-row*col'</td>
               <td>如<code>normal-table-2*4</code>
                 <div className='content--ch'>插入2行(包含表头是3行)4列的表格。</div>
-                <div className='content--en'>Insert a table with 2 rows (including 3 rows in the header) and 4 columns.</div>
+                <div className='content--en'>Insert a table with 2 rows (3 rows in the header),4 columns.</div>
               </td>
             </tr>
           </tbody>
@@ -214,27 +214,27 @@ const ToolbarHandlersApi = (props: { cherry: React.MutableRefObject<Cherry | nul
           </thead>
           <tbody>
             <tr>
-              <td className='default-type'>1|'1'|'flow'</td>
+              <td className='type-style'>1|'1'|'flow'</td>
               <td>流程图</td>
             </tr>
             <tr>
-              <td className='default-type'>2|'2'|'sequence'</td>
+              <td className='type-style'>2|'2'|'sequence'</td>
               <td>时序图</td>
             </tr>
             <tr>
-              <td className='default-type'>3|'3'|'state'</td>
+              <td className='type-style'>3|'3'|'state'</td>
               <td>状态图</td>
             </tr>
             <tr>
-              <td className='default-type'>4|'4'|'class'</td>
+              <td className='type-style'>4|'4'|'class'</td>
               <td>类图</td>
             </tr>
             <tr>
-              <td className='default-type'>5|'5'|'pie'</td>
+              <td className='type-style'>5|'5'|'pie'</td>
               <td>饼图</td>
             </tr>
             <tr>
-              <td className='default-type'>6|'6'|'gantt'</td>
+              <td className='type-style'>6|'6'|'gantt'</td>
               <td>甘特图</td>
             </tr>
           </tbody>
