@@ -10,11 +10,12 @@ const ToolbarHandlersApi = (props: { cherry: React.MutableRefObject<Cherry | nul
 
   const toolbarHandlersStrikethrough = () => props.cherry.current?.toolbar.toolbarHandlers.strikethrough();
 
-  const toolbarHandlersList = (type: number) => props.cherry.current?.toolbar.toolbarHandlers.list(type);
+  const toolbarHandlersList = (type: 'ol' | 'ul' | 'checklist' | 1 | 2 | 3 | '1' | '2' | '3') => props.cherry.current?.toolbar.toolbarHandlers.list(type);
 
   const toolbarHandlersInsert = (type: string) => props.cherry.current?.toolbar.toolbarHandlers.insert(type);
 
-  const toolbarHandlersGraph = (type: number) => props.cherry.current?.toolbar.toolbarHandlers.graph(type);
+  const toolbarHandlersGraph = (type: '1' | '2' | '3' | '4' | '5' | '6' | 1 | 2 | 3 | 4 | 5 | 6 | 'flow' | 'sequence' | 'state' | 'class' | 'pie' | 'gantt') =>
+    props.cherry.current?.toolbar.toolbarHandlers.graph(type);
 
   return (
     <>
@@ -78,7 +79,8 @@ const ToolbarHandlersApi = (props: { cherry: React.MutableRefObject<Cherry | nul
       </div>
 
       <div className='apis__item'>
-        <h2>toolbar.toolbarHandlers.list(type:'ol'|'ul'|'checklist'|1|2|3|'1'|'2'|'3')</h2>
+        <h2>toolbar.toolbarHandlers.list</h2>
+        <h2>(type:'ol'|'ul'|'checklist'|1|2|3|'1'|'2'|'3')</h2>
         <div className='introduce__title'>
           <div className='title--ch'>向cherry编辑器中插入有序、无序列表或者checklist语法。</div>
           <div className='title--en' >Insert ordered lists, unordered lists, or checklist syntax into the Cherry editor.</div>
@@ -107,15 +109,27 @@ const ToolbarHandlersApi = (props: { cherry: React.MutableRefObject<Cherry | nul
         </table>
         <div className='content__operate'>
           <div className='content__operate__item'>
-            <a onClick={() => toolbarHandlersList(1)}>ordered lists</a>
-            <a onClick={() => toolbarHandlersList(2)}>unordered lists</a>
-            <a onClick={() => toolbarHandlersList(3)}>checklist</a>
+            <a onClick={() => toolbarHandlersList(1)}>(1)ordered lists</a>
+            <a onClick={() => toolbarHandlersList(2)}>(2)unordered lists</a>
+            <a onClick={() => toolbarHandlersList(3)}>(3)checklist</a>
+          </div>
+          <div className='content__operate__item'>
+            <a onClick={() => toolbarHandlersList('1')}>('1')ordered lists</a>
+            <a onClick={() => toolbarHandlersList('2')}>('2')unordered lists</a>
+            <a onClick={() => toolbarHandlersList('3')}>('3')checklist</a>
+          </div>
+          <div className='content__operate__item'>
+            <a onClick={() => toolbarHandlersList('ol')}>('ol')ordered lists</a>
+            <a onClick={() => toolbarHandlersList('ul')}>('ul')unordered lists</a>
+            <a onClick={() => toolbarHandlersList('checklist')}>('checklist')checklist</a>
           </div>
         </div>
       </div>
 
       <div className='apis__item'>
-        <h2>toolbar.toolbarHandlers.insert(type:'hr'|'br'|'code'|'formula'|'checklist'|'toc'|'link'|'image'|'video'|'audio'|'normal-table'|'normal-table-row*col')</h2>
+        <h2>toolbar.toolbarHandlers.insert(type:'hr'|</h2>
+        <h2>'br'|'code'|'formula'|'checklist'|'toc'|'link'|'image'|</h2>
+        <h2>'video'|'audio'|'normal-table'|'normal-table-row*col')</h2>
         <div className='introduce__title'>
           <div className='title--ch'>向cherry编辑器中插入特定语法。</div>
           <div className='title--en' >Insert specific syntax into the Cherry editor.</div>
@@ -200,7 +214,8 @@ const ToolbarHandlersApi = (props: { cherry: React.MutableRefObject<Cherry | nul
       </div>
 
       <div className='apis__item'>
-        <h2>toolbar.toolbarHandlers.graph(type:'1'|'2'|'3'|'4'|'5'|'6'|1|2|3|4|5|6|'flow'|'sequence'|'state'|'class'|'pie'|'gantt')</h2>
+        <h2>toolbar.toolbarHandlers.graph(type:'1'|'2'|'3'|'4'|'5'|'6'</h2>
+        <h2>|1|2|3|4|5|6|'flow'|'sequence'|'state'|'class'|'pie'|'gantt')</h2>
         <div className='introduce__title'>
           <div className='title--ch'>向cherry编辑器中插入画图语法。</div>
           <div className='title--en' >Insert drawing syntax into Cherry editor.</div>
@@ -241,12 +256,28 @@ const ToolbarHandlersApi = (props: { cherry: React.MutableRefObject<Cherry | nul
         </table>
         <div className='content__operate'>
           <div className='content__operate__item'>
-            <a onClick={() => toolbarHandlersGraph(1)}>ordered</a>
-            <a onClick={() => toolbarHandlersGraph(2)}>unordered</a>
-            <a onClick={() => toolbarHandlersGraph(3)}>checklist</a>
-            <a onClick={() => toolbarHandlersGraph(4)}>ordered</a>
-            <a onClick={() => toolbarHandlersGraph(5)}>unordered</a>
-            <a onClick={() => toolbarHandlersGraph(6)}>checklist</a>
+            <a onClick={() => toolbarHandlersGraph(1)}>(1)ordered</a>
+            <a onClick={() => toolbarHandlersGraph(2)}>(1)unordered</a>
+            <a onClick={() => toolbarHandlersGraph(3)}>(1)checklist</a>
+            <a onClick={() => toolbarHandlersGraph(4)}>(1)ordered</a>
+            <a onClick={() => toolbarHandlersGraph(5)}>(1)unordered</a>
+            <a onClick={() => toolbarHandlersGraph(6)}>(1)checklist</a>
+          </div>
+          <div className='content__operate__item'>
+            <a onClick={() => toolbarHandlersGraph('1')}>('1')ordered</a>
+            <a onClick={() => toolbarHandlersGraph('2')}>('2')unordered</a>
+            <a onClick={() => toolbarHandlersGraph('3')}>('3')checklist</a>
+            <a onClick={() => toolbarHandlersGraph('4')}>('4')ordered</a>
+            <a onClick={() => toolbarHandlersGraph('5')}>('5')unordered</a>
+            <a onClick={() => toolbarHandlersGraph('6')}>('6')checklist</a>
+          </div>
+          <div className='content__operate__item'>
+            <a onClick={() => toolbarHandlersGraph('flow')}>('flow')ordered</a>
+            <a onClick={() => toolbarHandlersGraph('sequence')}>('sequence')unordered</a>
+            <a onClick={() => toolbarHandlersGraph('state')}>('state')checklist</a>
+            <a onClick={() => toolbarHandlersGraph('class')}>('class')ordered</a>
+            <a onClick={() => toolbarHandlersGraph('pie')}>('pie')unordered</a>
+            <a onClick={() => toolbarHandlersGraph('gantt')}>('gantt')checklist</a>
           </div>
         </div>
       </div>

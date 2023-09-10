@@ -11,9 +11,9 @@ const BaseApi = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
     }, 1500);
   }
 
-  const setInsertValue = () => {
+  const setInsertValue = (isSelect: boolean, anchor: false | [number, number], focus: boolean) => {
     const value = (document.getElementById('markdown-value') as HTMLInputElement).value;
-    props.cherry.current?.insert(value, true, [1, 2], true);
+    props.cherry.current?.insert(value, isSelect, anchor, focus);
   }
 
   const getMarkdownValue = () => {
@@ -21,19 +21,18 @@ const BaseApi = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
     console.log(props.cherry.current?.getMarkdown());
   }
 
-  const getHtmlValue = () => {
-    alert(props.cherry.current?.getHtml());
-    console.log(props.cherry.current?.getHtml());
+  const getHtmlValue = (wrapTheme: boolean) => {
+    alert(props.cherry.current?.getHtml(wrapTheme));
+    console.log(props.cherry.current?.getHtml(wrapTheme));
   }
 
   const exportFile = (type: string, fileName: string) => props.cherry.current?.export(type, fileName);
 
+  const editPreview = () => props.cherry.current?.switchModel('edit&preview');
 
-  const readOnly = () => props.cherry.current?.switchModel('previewOnly');
+  const editOnly = () => props.cherry.current?.switchModel('editOnly');
 
-  const pureEditing = () => props.cherry.current?.switchModel('editOnly');
-
-  const doubleColumnEditing = () => props.cherry.current?.switchModel('edit&preview');
+  const previewOnly = () => props.cherry.current?.switchModel('previewOnly');
 
   const getToc = () => {
     const toc = props.cherry.current?.getToc();
@@ -125,7 +124,8 @@ const BaseApi = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
         <div className='content__operate'>
           <div className='content__operate__item'>
             <textarea style={{ width: "100%" }} rows={3} id='set-markdown-value' defaultValue="#插入内容 insert Content" />
-            <a onClick={setInsertValue}>try it</a>
+            <a onClick={() => setInsertValue(false, [0, 3], true)}>isSelect=false, anchor=[0,3], focus=true</a>
+            <a onClick={() => setInsertValue(true, false, true)}>isSelect=true, anchor=false, focus=true</a>
           </div>
         </div>
       </div>
@@ -150,9 +150,6 @@ const BaseApi = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
           <div className='title--en' >Get rendered HTML content.</div>
         </div>
         <div className='content__operate'>
-          <div className='content__operate__item'>
-            <a onClick={getHtmlValue}>try it</a>
-          </div>
           <div className='content--ch'>
             <div>wrapTheme?:<span className='type-style'>boolean</span>
               <span className='default-style'>(true)</span>
@@ -163,7 +160,12 @@ const BaseApi = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
               <span className='default-style'>(true)</span>
               Does wrap the theme class in the outer layer.</div>
           </div>
+          <div className='content__operate__item'>
+            <a onClick={() => getHtmlValue(false)}>wrapTheme = false</a>
+            <a onClick={() => getHtmlValue(true)}>wrapTheme = true</a>
+          </div>
         </div>
+
       </div>
 
       <div className='apis__item'>
@@ -175,7 +177,7 @@ const BaseApi = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
         <div className='content--en'>
           <div>type:<span className='type-style'>'pdf' | 'img' 'html' | 'markdown'</span>:
             <span className='default-style'>('pdf')</span>
-            </div>
+          </div>
         </div>
         <div className='content__operate'>
           <div className='content__operate__item'>
@@ -201,9 +203,9 @@ const BaseApi = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
         </div>
         <div className='content__operate'>
           <div className='content__operate__item'>
-            <a onClick={readOnly}>read Only</a>
-            <a onClick={pureEditing}>Pure Editing</a>
-            <a onClick={doubleColumnEditing}>Double Column Editing</a>
+            <a onClick={editPreview}>edit & preview</a>
+            <a onClick={editOnly}>Edit only</a>
+            <a onClick={previewOnly}>Preview only</a>
           </div>
         </div>
       </div>
