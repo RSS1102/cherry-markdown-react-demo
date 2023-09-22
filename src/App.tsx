@@ -8,12 +8,15 @@ import ToolbarHandlersApi from './apis/toolbarHandlersApi';
 
 function App() {
   const cherry = useRef<Cherry | null>(null)
-  useEffect(() => {
-    cherry.current = new Cherry({
-      id: "cherry-markdown",
-      value: "# Hello World",
-    });
-  }, [])
+  useLayoutEffect(() => {
+    if (!cherry.current) {
+      cherry.current = new Cherry({
+        id: "cherry-markdown",
+        value: "# Hello World",
+        locale: "en_US",
+      });
+    }
+  }, []);
 
   return (
     <div className='home'>
