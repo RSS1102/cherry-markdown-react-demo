@@ -129,8 +129,8 @@ const BaseApi = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
       <DemoRack
         id={'getMarkdown'}
         title={'getMarkdown()'}
-        nameCn={'获取 Markdown 内容。'}
-        nameEn={'Get value of Markdown.'}
+        nameCn={'获取markdown内容。'}
+        nameEn={'Get value of markdown.'}
         contentEn={"null"}
         contentSample={
           <div className='content__operate__item'>
