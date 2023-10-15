@@ -17,6 +17,10 @@ const ToolbarHandlersApi = (props: { cherry: React.MutableRefObject<Cherry | nul
   const toolbarHandlersGraph = (type: '1' | '2' | '3' | '4' | '5' | '6' | 1 | 2 | 3 | 4 | 5 | 6 | 'flow' | 'sequence' | 'state' | 'class' | 'pie' | 'gantt') =>
     props.cherry.current?.toolbar.toolbarHandlers.graph(type);
 
+  const toolbarHandlersPreviewOnly = () => props.cherry.current?.toolbar.previewOnly();
+
+  const toolbarHandlersShowToolbar = () => props.cherry.current?.toolbar.showToolbar();
+
   return (
     <>
       <h1>Cherry.toolbar.toolbarHandlers API</h1>
@@ -278,6 +282,32 @@ const ToolbarHandlersApi = (props: { cherry: React.MutableRefObject<Cherry | nul
             <a onClick={() => toolbarHandlersGraph('class')}>('class')ordered</a>
             <a onClick={() => toolbarHandlersGraph('pie')}>('pie')unordered</a>
             <a onClick={() => toolbarHandlersGraph('gantt')}>('gantt')checklist</a>
+          </div>
+        </div>
+      </div>
+
+      <div className='apis__item'>
+        <h2>cherry.toolbar.showToolbar()</h2>
+        <div className='introduce__title'>
+          <div className='title--ch'>向cherry编辑器中插入加粗语法。</div>
+          <div className='title--en' >Insert bold syntax into Cherry editor.</div>
+        </div>
+        <div className='content__operate'>
+          <div className='content__operate__item'>
+            <a onClick={toolbarHandlersPreviewOnly}>try it</a>
+          </div>
+        </div>
+      </div>
+
+      <div className='apis__item'>
+        <h2>cherry.toolbar.showToolbar()</h2>
+        <div className='introduce__title'>
+          <div className='title--ch'>向cherry编辑器中插入加粗语法。</div>
+          <div className='title--en' >Insert bold syntax into Cherry editor.</div>
+        </div>
+        <div className='content__operate'>
+          <div className='content__operate__item'>
+            <a onClick={toolbarHandlersShowToolbar}>try it</a>
           </div>
         </div>
       </div>

@@ -1,7 +1,9 @@
 import Cherry from 'cherry-markdown';
-import './index.css'
+import DemoRack from '@/components/DemoRack';
 
 const BaseApi = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
+
+
 
   const setMarkdownValue = () => {
     const value = (document.getElementById('set-markdown-value') as HTMLInputElement).value;
@@ -17,12 +19,12 @@ const BaseApi = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
   }
 
   const getMarkdownValue = () => {
-    alert(props.cherry.current?.getMarkdown());
+    alert('Please go to the console to view.请前往控制台查看。');
     console.log(props.cherry.current?.getMarkdown());
   }
 
   const getHtmlValue = (wrapTheme: boolean) => {
-    alert(props.cherry.current?.getHtml(wrapTheme));
+    alert('Please go to the console to view.请前往控制台查看。');
     console.log(props.cherry.current?.getHtml(wrapTheme));
   }
 
@@ -36,47 +38,46 @@ const BaseApi = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
 
   const getToc = () => {
     const toc = props.cherry.current?.getToc();
-    alert(JSON.stringify(toc));
+    alert('Please go to the console to view.请前往控制台查看。');
     console.log(toc);
   }
 
   const getCodeMirror = () => {
     const codeMirror = props.cherry.current?.getCodeMirror();
-    alert('open console to see the instance of CodeMirror.');
+    alert('Please go to the console to view.请前往控制台查看。');
     console.log(codeMirror);
   }
 
   const getPreviewer = () => {
     const previewer = props.cherry.current?.getPreviewer();
-    alert('open console to see the instance of Previewer.');
+    alert('Please go to the console to view.请前往控制台查看。');
     console.log(previewer);
   }
 
   return (
     <>
       <h1> Cherry API</h1>
-      <div className='apis__item'>
-        <h2>setMarkdown(content:string, keepCursor = false)</h2>
-        <h4>Same as : setValue(content:string, keepCursor = false)</h4>
-        <div className='introduce__title'>
-          <div className='title--ch'>设置内容</div>
-          <div className='title--en' >set value</div>
-        </div>
-        <div className='content--ch'>
+
+      <DemoRack
+        id={'setMarkdown'}
+        title={'setMarkdown(content:string, keepCursor = false)'}
+        nameCn={'设置内容'}
+        nameEn={'set value'}
+        contentCn={(<>
           <div>content:<span className='type-style'>string</span> 设置的新内容。</div>
           <div> keepCursor?:
-            <span className='type-style'>boolean</span>
-            <span className='default-style'>(false)</span>
-            更新内容的时候保持光标位置。</div>
-        </div>
-        <div className='content--en'>
+            <span className='type-style'>boolean(false)</span>
+            更新内容的时候保持光标位置。
+          </div>
+        </>)}
+        contentEn={(<>
           <div>content?: <span className='type-style'>string</span> New content set up.</div>
           <div>keepCursor?:
-            <span className='type-style'>boolean</span>
-            <span className='default-style'>(false)</span>
-            Keeps the cursor position when updating content.</div>
-        </div>
-        <div className='content__operate'>
+            <span className='type-style'>boolean(false)</span>
+            Keeps the cursor position when updating content.
+          </div>
+        </>)}
+        contentSample={(<>
           <div className='content__operate__item'>
             <textarea style={{ width: "100%" }} rows={3} id='markdown-value' defaultValue="#输入内容 Input Content" />
             <div className='content__operate__item__additional-description additional-description--ch'>
@@ -88,166 +89,150 @@ const BaseApi = (props: { cherry: React.MutableRefObject<Cherry | null> }) => {
             </div>
             <a onClick={setMarkdownValue}>try it</a>
           </div>
-        </div>
-      </div>
+        </>)}
+        other={<div>Same as : <code>setValue(content:string, keepCursor = false)</code></div>}
+      />
 
-      <div className='apis__item'>
-        <h2>insert(content:string, isSelect = false, anchor = false, focus = true)</h2>
-        <div className='introduce__title'>
-          <div className='title--ch'>插入内容</div>
-          <div className='title--en' >insert value</div>
-        </div>
-        <div className='content--ch'>
+      <DemoRack
+        id={'insert'}
+        title={'insert(content:string, isSelect = false, anchor = false, focus = true)'}
+        nameCn={'插入内容'}
+        nameEn={'insert value'}
+        contentCn={<>
           <div>content:<span className='type-style'>string</span> 插入的内容。</div>
-          <div>isSelect?:<span className='type-style'>boolean</span>
-            <span className='default-style'>(false)</span> 选中刚插入的内容</div>
+          <div>isSelect?:<span className='type-style'>boolean(false)</span>
+            选中刚插入的内容</div>
           <div>anchor?:
-            <span className='type-style'>boolean</span>
-            <span className='default-style'>(false)</span>
+            <span className='type-style'>boolean(false)</span>
             [x,y] 代表x+1行，y+1字符偏移量，默认false 会从光标处插入。</div>
-          <div>focus:<span className='type-style'>boolean</span>
-            <span className='default-style'>(true)</span>
+          <div>focus:<span className='type-style'>boolean(true)</span>
             保持编辑器处于focus状态，默认true，选中编辑器（用户可以继续输入）。</div>
-        </div>
-        <div className='content--en'>
+        </>}
+        contentEn={<>
           <div>content:<span className='type-style'>string</span> Insert the content.</div>
-          <div>isSelect?:<span className='type-style'>boolean</span>
-            <span className='default-style'>(false)</span>
+          <div>isSelect?:<span className='type-style'>boolean(false)</span>
             Select the content just inserted.</div>
-          <div>anchor?:<span className='type-style'>boolean</span>
-            <span className='default-style'>(false)</span>
+          <div>anchor?:<span className='type-style'>boolean(false)</span>
             [x, y] Represents x+1 line, y+1 character offset, default false will be inserted from the cursor.</div>
-          <div>focus?:<span className='type-style'>boolean</span>
-            <span className='default-style'>(true)</span>
+          <div>focus?:<span className='type-style'>boolean(true)</span>
             Keep the editor in the focus state, default to true, select the editor (users can continue typing).</div>
-        </div>
-        <div className='content__operate'>
+        </>}
+        contentSample={<>
           <div className='content__operate__item'>
             <textarea style={{ width: "100%" }} rows={3} id='set-markdown-value' defaultValue="#插入内容 insert Content" />
             <a onClick={() => setInsertValue(false, [0, 3], true)}>isSelect=false, anchor=[0,3], focus=true</a>
             <a onClick={() => setInsertValue(true, false, true)}>isSelect=true, anchor=false, focus=true</a>
           </div>
-        </div>
-      </div>
+        </>}
+      />
 
-      <div className='apis__item'>
-        <h2>getMarkdown()</h2>
-        <div className='introduce__title'>
-          <div className='title--ch'>获取 Markdown 内容。</div>
-          <div className='title--en' >Get value of Markdown.</div>
-        </div>
-        <div className='content__operate'>
+      <DemoRack
+        id={'getMarkdown'}
+        title={'getMarkdown()'}
+        nameCn={'获取 Markdown 内容。'}
+        nameEn={'Get value of Markdown.'}
+        contentEn={"null"}
+        contentSample={
           <div className='content__operate__item'>
             <a onClick={getMarkdownValue}>try it</a>
           </div>
-        </div>
-      </div>
+        } />
 
-      <div className='apis__item'>
-        <h2>getHtml(wrapTheme = true)</h2>
-        <div className='introduce__title'>
-          <div className='title--ch'>获取渲染后的html内容。</div>
-          <div className='title--en' >Get rendered HTML content.</div>
-        </div>
-        <div className='content__operate'>
-          <div className='content--ch'>
-            <div>wrapTheme?:<span className='type-style'>boolean</span>
-              <span className='default-style'>(true)</span>
-              是否在外层包裹主题class</div>
-          </div>
-          <div className='content--en'>
-            <div>wrapTheme?:<span className='type-style'>boolean</span>
-              <span className='default-style'>(true)</span>
-              Does wrap the theme class in the outer layer.</div>
-          </div>
+      <DemoRack
+        id={'getHtml'}
+        title={'getHtml(wrapTheme = true)'}
+        nameCn={'获取渲染后的html内容。'}
+        nameEn={'Get rendered HTML content.'}
+        contentCn={
+          <div>wrapTheme?:
+            <span className='type-style'>boolean(true)</span>
+            是否在外层包裹主题class
+          </div>}
+        contentEn={<div>
+          wrapTheme?:<span className='type-style'>boolean(true)</span>
+          Does wrap the theme class in the outer layer.
+        </div>}
+        contentSample={
           <div className='content__operate__item'>
             <a onClick={() => getHtmlValue(false)}>wrapTheme = false</a>
             <a onClick={() => getHtmlValue(true)}>wrapTheme = true</a>
           </div>
-        </div>
+        } />
 
-      </div>
-
-      <div className='apis__item'>
-        <h2>export(type='pdf')</h2>
-        <div className='introduce__title'>
-          <div className='title--ch'>导出预览区域的内容。</div>
-          <div className='title--en' >Export the content of the preview area.</div>
-        </div>
-        <div className='content--en'>
-          <div>type:<span className='type-style'>'pdf' | 'img' 'html' | 'markdown'</span>:
-            <span className='default-style'>('pdf')</span>
-          </div>
-        </div>
-        <div className='content__operate'>
+      <DemoRack
+        id={'export'}
+        title={"export(type='pdf')"}
+        nameCn={'导出预览区域的内容。'}
+        nameEn={'Export the content of the preview area.'}
+        contentCn={<div>
+          type:<span className='type-style'>'pdf' | 'img' 'html' | 'markdown'('pdf')</span>
+        </div>}
+        contentEn={<div>
+          type:<span className='type-style'>'pdf' | 'img' 'html' | 'markdown'('pdf')</span>
+        </div>}
+        contentSample={
           <div className='content__operate__item'>
-            <a onClick={() => exportFile('pdf', 'cherry.pdf')}>export PDF</a>
+            <a onClick={() => exportFile('pdf', 'cherry.pdf')}>export pdf</a>
             <a onClick={() => exportFile('img', 'cherry.png]')}>export img</a>
             <a onClick={() => exportFile('html', 'cherry.html')}>export html</a>
             <a onClick={() => exportFile('markdown', 'cherry.md]')}>export markdown</a>
           </div>
-        </div>
-      </div>
+        } />
 
-      <div className='apis__item'>
-        <h2>switchModel(model:string)</h2>
-        <div className='introduce__title'>
-          <div className='title--ch'>切换模式。</div>
-          <div className='title--en' >Switch Mode.</div>
-        </div>
-        <div className='content--en'>
-          <div>model:
-            <span className='type-style'>'edit&preview' | 'editOnly' | 'previewOnly'</span>
-            <span className='default-style'>('edit&preview')</span>
-          </div>
-        </div>
-        <div className='content__operate'>
+      <DemoRack
+        id={'switchModel'}
+        title={"switchModel(model:string)"}
+        nameCn={'切换模式。'}
+        nameEn={'Switch Mode.'}
+        contentCn={<div>
+          type:<span className='type-style'>'edit&preview' | 'editOnly' | 'previewOnly'('edit&preview')</span>
+        </div>}
+        contentEn={<div>
+          type:<span className='type-style'>'edit&preview' | 'editOnly' | 'previewOnly'('edit&preview')</span>
+        </div>}
+        contentSample={
           <div className='content__operate__item'>
             <a onClick={editPreview}>edit & preview</a>
             <a onClick={editOnly}>Edit only</a>
             <a onClick={previewOnly}>Preview only</a>
           </div>
-        </div>
-      </div>
+        } />
 
-      <div className='apis__item'>
-        <h2>getToc()</h2>
-        <div className='introduce__title'>
-          <div className='title--ch'>获取由标题组成的目录。</div>
-          <div className='title--en' >Get a table of contents composed of titles.</div>
-        </div>
-        <div className='content__operate'>
+      <DemoRack
+        id={'getToc'}
+        title={"getToc()"}
+        nameCn={'获取由标题组成的目录。'}
+        nameEn={'Get a table of contents composed of titles.'}
+        contentEn={'null'}
+        contentSample={
           <div className='content__operate__item'>
             <a onClick={getToc}>try it</a>
           </div>
-        </div>
-      </div>
+        } />
 
-      <div className='apis__item'>
-        <h2>getCodeMirror()</h2>
-        <div className='introduce__title'>
-          <div className='title--ch'>获取左侧编辑器实例。</div>
-          <div className='title--en' >get Left Editor(CodeMirror) instance.</div>
-        </div>
-        <div className='content__operate'>
+      <DemoRack
+        id={'getCodeMirror'}
+        title={"getCodeMirror()"}
+        nameCn={'获取左侧编辑器对象实例。'}
+        nameEn={'get Left CodeMirror instance.'}
+        contentEn={'null'}
+        contentSample={
           <div className='content__operate__item'>
             <a onClick={getCodeMirror}>try it</a>
           </div>
-        </div>
-      </div>
+        } />
 
-      <div className='apis__item'>
-        <h2>getPreviewer()</h2>
-        <div className='introduce__title'>
-          <div className='title--ch'>获取右侧预览区对象实例。</div>
-          <div className='title--en' >Get an instance of the right preview area object.</div>
-        </div>
-        <div className='content__operate'>
+      <DemoRack
+        id={'getPreviewer'}
+        title={"getPreviewer()"}
+        nameCn={'获取右侧预览区对象实例。'}
+        nameEn={'Get an instance of the right preview area object.'}
+        contentEn={'null'}
+        contentSample={
           <div className='content__operate__item'>
             <a onClick={getPreviewer}>try it</a>
           </div>
-        </div>
-      </div>
+        } />
     </>
   )
 
