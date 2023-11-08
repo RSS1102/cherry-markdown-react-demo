@@ -80,7 +80,7 @@ const ToolbarHandlersApi = (props: { cherry: React.MutableRefObject<Cherry | nul
         } />
 
       <DemoRack
-        id={'strikethrough'}
+        id={'list'}
         title={"toolbar.toolbarHandlers.list(type:'ol'|'ul'|'checklist'|1|2|3|'1'|'2'|'3')"}
         nameCn={'向cherry编辑器中插入有序、无序列表或者checklist语法。'}
         nameEn={'Insert ordered lists, unordered lists, or checklist syntax into the Cherry editor.'}
@@ -109,24 +109,26 @@ const ToolbarHandlersApi = (props: { cherry: React.MutableRefObject<Cherry | nul
         contentSample={<>
           <div className='content__operate__item'>
             <a onClick={() => toolbarHandlersList(1)}>(1)ordered lists</a>
-            <a onClick={() => toolbarHandlersList(2)}>(2)unordered lists</a>
-            <a onClick={() => toolbarHandlersList(3)}>(3)checklist</a>
-          </div>
-          <div className='content__operate__item'>
             <a onClick={() => toolbarHandlersList('1')}>('1')ordered lists</a>
-            <a onClick={() => toolbarHandlersList('2')}>('2')unordered lists</a>
-            <a onClick={() => toolbarHandlersList('3')}>('3')checklist</a>
+            <a onClick={() => toolbarHandlersList('ol')}>('ol')ordered lists</a>
+
           </div>
           <div className='content__operate__item'>
-            <a onClick={() => toolbarHandlersList('ol')}>('ol')ordered lists</a>
+            <a onClick={() => toolbarHandlersList(2)}>(2)unordered lists</a>
+            <a onClick={() => toolbarHandlersList('2')}>('2')unordered lists</a>
             <a onClick={() => toolbarHandlersList('ul')}>('ul')unordered lists</a>
+
+          </div>
+          <div className='content__operate__item'>
+            <a onClick={() => toolbarHandlersList(3)}>(3)checklist</a>
+            <a onClick={() => toolbarHandlersList('3')}>('3')checklist</a>
             <a onClick={() => toolbarHandlersList('checklist')}>('checklist')checklist</a>
           </div>
         </>
         } />
 
       <DemoRack
-        id={'insert'}
+        id={'toolbarHandlers insert'}
         title={"toolbar.toolbarHandlers.insert" +
           "(type:'hr'|'br'|'code'|'formula'|'checklist'|'toc'|'link'|'image'|'video'|'audio'|'normal-table'|'normal-table-row*col')"}
         nameCn={'向cherry编辑器中插入特定语法。'}
